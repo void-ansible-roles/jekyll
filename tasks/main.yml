@@ -1,7 +1,6 @@
 ---
 - name: Install dependencies
-  xbps: name={{ item }}
-  state=present
+  xbps: name={{ item }} state=present
   with_items:
     - ruby
     - ruby-devel
@@ -10,53 +9,28 @@
     - git
 
 - name: Install firewall rules
-  copy:
-  src=jekyll.rules
-  dest=/etc/iptables.d/jekyll.rules
-  owner=root
-  group=root
-  mode=0640
+  copy: src=jekyll.rules dest=/etc/iptables.d/jekyll.rules owner=root group=root mode=0640
   notify:
     - iptables
 
 - name: Install Jekyll
-  gem: name={{ item }}
-  state=present
-  user_install=no
+  gem: name={{ item }} state=present user_install=no
   with_items:
     - jekyll
     - jekyll-paginate
 
 - name: Install site descriptor
-  template:
-  src=jekyll.conf
-  dest=/etc/nginx/sites-available/{{ jekyll_site_name }}.conf
-  owner=root
-  group=root
-  mode=0644
+  template: src=jekyll.conf dest=/etc/nginx/sites-available/{{ jekyll_site_name }}.conf owner=root group=root mode=0644
   notify:
     - nginx
 
 - name: Enable site
-  file:
-  src=/etc/nginx/sites-available/{{ jekyll_site_name }}.conf
-  dest=/etc/nginx/sites-enabled/{{ jekyll_site_name }}.conf
-  state=link
+  file: src=/etc/nginx/sites-available/{{ jekyll_site_name }}.conf dest=/etc/nginx/sites-enabled/{{ jekyll_site_name }}.conf state=link
   notify:
     - nginx
 
 - name: Install site build script
-  template:
-  src=jekyll_build.sh
-  dest=/usr/local/sbin/jekyll-build-{{ jekyll_site_name }}
-  owner=root
-  group=root
-  mode=0755
+  template: src=jekyll_build.sh dest=/usr/local/sbin/jekyll-build-{{ jekyll_site_name }} owner=root group=root mode=0755
 
 - name: Add cron job for site
-  template:
-  src=jekyll_build.cron
-  dest=/etc/cron.d/{{ jekyll_site_name }}
-  owner=root
-  group=root
-  mode=0644
+  template: src=jekyll_build.cron dest=/etc/cron.d/{{ jekyll_site_name }} owner=root group=root mode=0644
