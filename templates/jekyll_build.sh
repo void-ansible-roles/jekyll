@@ -1,7 +1,7 @@
 #!/bin/sh
 
 JEKYLL_SITE_PATH="/opt/var/jekyll/{{ jekyll_site_name }}"
-JEKYLL_CLONE_URI="{{ jekyll_site_uri }}"
+JEKYLL_CLONE_URI="{{ jekyll_source_url }}"
 JEKYLL_BUILD_PATH="{{ jekyll_site_path}}"
 
 # Does the Jekyll content path exist
