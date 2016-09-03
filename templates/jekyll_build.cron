@@ -1,2 +1,2 @@
-0  * * * * /usr/local/sbin/jekyll-build-{{ jekyll_site_name }}
-30 * * * * /usr/local/sbin/jekyll-build-{{ jekyll_site_name }}
+0  * * * * /usr/local/sbin/jekyll-build-{{ jekyll_site_name }} >/dev/null
+30 * * * * /usr/local/sbin/jekyll-build-{{ jekyll_site_name }} >/dev/null
