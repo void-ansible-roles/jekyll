@@ -2,7 +2,7 @@
 
 JEKYLL_SITE_PATH="/opt/var/jekyll/{{ jekyll_site_name }}"
 JEKYLL_CLONE_URI="{{ jekyll_source_url }}"
-JEKYLL_BUILD_PATH="{{ jekyll_site_path}}"
+JEKYLL_SERVE_PATH="{{ jekyll_site_path}}"
 
 # Does the Jekyll content path exist
 if [ ! -d "$JEKYLL_SITE_PATH" ] ; then
@@ -20,12 +20,15 @@ else
 fi
 
 # Build destdir if it doesn't exist
-if [ ! -d "$JEKYLL_BUILD_PATH" ] ; then
-    mkdir -p "$JEKYLL_BUILD_PATH"
+if [ ! -d "$JEKYLL_SERVE_PATH" ] ; then
+    mkdir -p "$JEKYLL_SERVE_PATH"
 fi
 
 # Build the site
-jekyll build --destination "$JEKYLL_BUILD_PATH"
+jekyll build
+
+# Deploy the site
+rsync -a _site/ "$JEKYLL_SERVE_PATH"
 
 # Fix the system permissions
-chmod og+rX "$JEKYLL_BUILD_PATH"
+chmod og+rX "$JEKYLL_SERVE_PATH"
