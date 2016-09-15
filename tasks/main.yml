@@ -19,6 +19,10 @@
     - jekyll
     - jekyll-paginate
 
+- name: Install dhparam.pem
+  copy: src=dhparam.pem dest=/etc/nginx/dhparam.pem owner=root group=root mode=0644
+  when: jekyll_use_ssl
+
 - name: Install site descriptor
   template: src=jekyll.conf dest=/etc/nginx/sites-available/{{ jekyll_site_name }}.conf owner=root group=root mode=0644
   notify:
