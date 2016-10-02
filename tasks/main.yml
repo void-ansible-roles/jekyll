@@ -23,6 +23,9 @@
   copy: src=dhparam.pem dest=/etc/nginx/dhparam.pem owner=root group=root mode=0644
   when: jekyll_use_ssl
 
+- name: Create folder for external nginx locations
+  file: path=/etc/nginx/locations.d/{{ jekyll_site_url }} state=directory owner=root group=root mode=0755
+
 - name: Install site descriptor
   template: src=jekyll.conf dest=/etc/nginx/sites-available/{{ jekyll_site_name }}.conf owner=root group=root mode=0644
   notify:
