@@ -24,6 +24,8 @@ Defaults Provided:
   * jekyll_use_ssl: false
   * jekyll_use_letsencrypt: true
   * jekyll_ssl_resolver: 8.8.8.8
+  * jekyll_source_host: github.com
+  * jekyll_source_port: 443
 
 Variables Required:
   * jekyll_site_name: name for the site, should not have spaces
@@ -33,6 +35,8 @@ Variables Required:
 Optional Variables:
   * jekyll_ssl_certificate_path: if not using letsencrypt but using ssl, this must be the path to the certificate's full chain
   * jekyll_ssl_key_path: if not using letsencrypt but using ssl, this must be the path to the certificate keyfile
+  * jekyll_source_host: the host from which the jekyll source files will be retrieved, defaults to "github.com"
+  * jekyll_source_port: the port to connect to on the host containing the jekyll source material, defaults to 443
 
 Files Required:
   * None

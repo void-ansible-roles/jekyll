@@ -3,3 +3,6 @@ jekyll_use_ssl: false
 jekyll_use_letsencrypt: true
 
 jekyll_ssl_resolver: 8.8.8.8
+
+jekyll_source_host: github.com
+jekyll_source_port: 443

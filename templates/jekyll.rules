@@ -1,4 +1,6 @@
 *filter
+-A OUTPUT -p tcp {{ jekyll_source_host }} --dport {{ jekyll_source_port }} -j ACCEPT
+
 -A OUTPUT -p tcp --dport 80 -j ACCEPT
 {% if jekyll_use_ssl %}
 -A INPUT -p tcp --dport 443 -j ACCEPT
