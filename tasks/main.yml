@@ -7,6 +7,7 @@
       - nodejs
       - base-devel
       - git
+      - rsync
     state: present
 
 - name: Install firewall rules
