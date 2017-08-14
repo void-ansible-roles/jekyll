@@ -10,7 +10,7 @@ if [ ! -d "$JEKYLL_SITE_PATH" ] ; then
 fi
 
 # Jump into the content path
-cd "$JEKYLL_SITE_PATH"
+cd "$JEKYLL_SITE_PATH" || { echo >&2 "Could not cd into content path: ${JEKYLL_SITE_PATH}"; exit 1; }
 
 # If we have .git update, otherwise clone
 if [ -d .git ] ; then
