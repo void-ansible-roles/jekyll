@@ -1,8 +1,8 @@
 #!/bin/sh
 
-JEKYLL_SITE_PATH="/opt/var/jekyll/{{ jekyll_site_name }}"
-JEKYLL_CLONE_URI="{{ jekyll_source_url }}"
-JEKYLL_SERVE_PATH="{{ jekyll_site_path}}"
+JEKYLL_SITE_PATH="/opt/var/jekyll/{{ site_name }}"
+JEKYLL_CLONE_URI="{{ source_url }}"
+JEKYLL_SERVE_PATH="{{ site_path}}"
 
 # Does the Jekyll content path exist
 if [ ! -d "$JEKYLL_SITE_PATH" ] ; then
