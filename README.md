@@ -20,9 +20,6 @@ Files Managed:
   * /etc/cron.d/[JEKYLL_SITE_NAME]
   * /usr/local/sbin/jekyll-build-[JEKYLL_SITE_NAME]
 
-Defaults Provided:
-  * jekyll_ssl_resolver: 8.8.8.8
-
 Variables Required:
   jekyll_sites:
   - site_name: the name for the site, should not have spaces

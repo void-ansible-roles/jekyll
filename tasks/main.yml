@@ -29,7 +29,8 @@
     - jekyll
     - jekyll-paginate
 
-# Replace this with include_role once that's stable
+# TODO: Replace this with include_role once that's stable
+# https://github.com/void-ansible-roles/jekyll/issues/8
 - name: Install site
   include: roles/{{ item.webserver }}/tasks/static-files.yml
   with_items: "{{ jekyll_sites }}"
@@ -38,17 +39,15 @@
 - name: Install site build script
   template:
     src: jekyll_build.sh
-    dest: /usr/local/sbin/jekyll-build-{{ item.site_name }}
+    dest: /usr/local/sbin/jekyll-build
     owner: root
     group: root
     mode: 0755
-  with_items: "{{ jekyll_sites }}"
 
 - name: Add cron job for site
   template:
     src: jekyll_build.cron
-    dest: /etc/cron.d/{{ item.site_name }}
+    dest: /etc/cron.d/jekyll_build
     owner: root
     group: root
     mode: 0644
-  with_items: "{{ jekyll_sites }}"
