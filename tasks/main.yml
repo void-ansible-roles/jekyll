@@ -28,6 +28,7 @@
   with_items:
     - jekyll
     - jekyll-paginate
+    - bundler
 
 # TODO: Replace this with include_role once that's stable
 # https://github.com/void-ansible-roles/jekyll/issues/8

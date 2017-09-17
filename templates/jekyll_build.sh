@@ -24,8 +24,14 @@ build_site() {
         mkdir -p "$JEKYLL_SERVE_PATH"
     fi
 
-    # Build the site
-    jekyll build
+    if [ -f Gemfile ] ; then
+        # This site uses the bundler, set it up and then build with it
+        bundler install --path vendor/bundle
+        bundler exec jekyll build
+    else
+        # Build the site
+        jekyll build
+    fi
 
     # Deploy the site
     rsync -a _site/ "$JEKYLL_SERVE_PATH"
