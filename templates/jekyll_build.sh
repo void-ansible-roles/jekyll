@@ -41,5 +41,5 @@ build_site() {
 }
 
 {% for site in jekyll_sites %}
-build_site "/opt/var/jekyll/{{ site_name }}" "{{ source_url }}" "{{ site_path}}"
+build_site "/opt/var/jekyll/{{ site.name }}" "{{ site.source_url }}" "{{ site.root_path}}"
 {% endfor %}

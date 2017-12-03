@@ -30,12 +30,13 @@
     - jekyll-paginate
     - bundler
 
-# TODO: Replace this with include_role once that's stable
-# https://github.com/void-ansible-roles/jekyll/issues/8
-- name: Install site
-  include: roles/{{ item.webserver }}/tasks/static-files.yml
+- name: Configure Webserver
+  include_role:
+    name: nginx
+    tasks_from: base-site
   with_items: "{{ jekyll_sites }}"
-
+  vars:
+    - site: "{{ item }}"
 
 - name: Install site build script
   template:
